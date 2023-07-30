@@ -4,10 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Wake Up from 2020</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="aframe\aframe.min.js"></script>
-  <script src="js\jquery-3.7.0.min.js"></script>
 </head>
 
 <body>
@@ -19,9 +16,8 @@
 
     AFRAME.registerComponent("playstart", {
       init: function () {
-        var myVideo = document.querySelector("#wakeup");
         this.el.addEventListener("click", function () {
-            myVideo.play();
+            document.querySelector("#wakeup").play();
         }, {once: true})
       }
     })
@@ -65,6 +61,360 @@ init: function() {
      }, {once: true})
    }
 })
+
+AFRAME.registerComponent("load-bedroom", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("show-bedroom")}
+ }, {once: true})
+}
+})
+
+AFRAME.registerComponent("bedroom-start", {
+  init: function () {
+    this.el.addEventListener("click", function () {
+        document.querySelector("#wakeup").pause();
+        document.querySelector("#video-bedroom").play();
+        document.getElementById('scene-wake').setAttribute('visible', 'false')
+        document.getElementById('scene-bedroom').setAttribute('visible', 'true')
+    }, {once: true})
+  }
+})
+
+AFRAME.registerComponent("load-greenhouse", {
+init: function() {
+ var pieces = document.querySelectorAll("dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("show-greenhouse")}
+ }, {once: true})
+}
+})
+
+AFRAME.registerComponent("greenhouse-start", {
+  init: function () {
+    this.el.addEventListener("click", function () {
+        document.querySelector("#video-bedroom").pause();
+        document.querySelector("#video-greenhouse").play();
+        document.querySelector("#audio-cafe").play();
+        document.getElementById('scene-bedroom').setAttribute('visible', 'false')
+        document.getElementById('scene-greenhouse').setAttribute('visible', 'true')
+    }, {once: true})
+  }
+})
+
+AFRAME.registerComponent("load-greenstand", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("show-greenstand")}
+ })
+}
+})
+
+AFRAME.registerComponent("greenstand-start", {
+  init: function () {
+    this.el.addEventListener("click", function () {
+        document.querySelector("#video-greenhouse").pause();
+        document.querySelector("#video-yard").pause();
+        document.querySelector("#audio-cafe").pause();
+        document.querySelector("#audio-bird").play();
+        document.getElementById('scene-greenhouse').setAttribute('visible', 'false')
+        document.getElementById('scene-yard').setAttribute('visible', 'false')
+        document.getElementById('scene-bedback').setAttribute('visible', 'false')
+        document.getElementById('scene-work').setAttribute('visible', 'false')
+        document.getElementById('scene-greenstand').setAttribute('visible', 'true')
+    })
+  }
+})
+
+AFRAME.registerComponent("load-bedback", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("show-bedback")}
+ })
+}
+})
+
+AFRAME.registerComponent("bedback-start", {
+  init: function () {
+    this.el.addEventListener("click", function () {
+        document.getElementById('scene-greenstand').setAttribute('visible', 'false')
+        document.getElementById('scene-bedback').setAttribute('visible', 'true')
+    })
+  }
+})
+
+AFRAME.registerComponent("load-work", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("show-work")}
+ })
+}
+})
+
+AFRAME.registerComponent("work-start", {
+  init: function () {
+    this.el.addEventListener("click", function () {
+        document.getElementById('scene-greenstand').setAttribute('visible', 'false')
+        document.getElementById('scene-work').setAttribute('visible', 'true')
+    })
+  }
+})
+
+AFRAME.registerComponent("load-yard", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("show-yard")}
+ })
+}
+})
+
+AFRAME.registerComponent("yard-start", {
+  init: function () {
+    this.el.addEventListener("click", function () {
+        document.querySelector("#video-yard").play();
+        document.getElementById('scene-greenstand').setAttribute('visible', 'false')
+        document.getElementById('scene-yard').setAttribute('visible', 'true')
+    })
+  }
+})
+
+AFRAME.registerComponent("yard0", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("door0")}
+ }, {once: true})
+}
+})
+
+AFRAME.registerComponent("load-out1", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("show-out1")}
+ }, {once: true})
+}
+})
+
+AFRAME.registerComponent("out1-start", {
+  init: function () {
+    this.el.addEventListener("click", function () {
+        document.querySelector("#video-yard").pause();
+        document.querySelector("#video-out1").play();
+        document.getElementById('scene-yard').setAttribute('visible', 'false')
+        document.getElementById('scene-out1').setAttribute('visible', 'true')
+    }, {once: true})
+  }
+})
+
+AFRAME.registerComponent("load-out2", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("show-out2")}
+ }, {once: true})
+}
+})
+
+AFRAME.registerComponent("out2-start", {
+  init: function () {
+    this.el.addEventListener("click", function () {
+        document.querySelector("#video-out1").pause();
+        document.querySelector("#video-out2").play();
+        document.getElementById('scene-out1').setAttribute('visible', 'false')
+        document.getElementById('scene-out2').setAttribute('visible', 'true')
+    }, {once: true})
+  }
+})
+
+AFRAME.registerComponent("load-back1", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("show-back1")}
+ }, {once: true})
+}
+})
+
+AFRAME.registerComponent("back1-start", {
+  init: function () {
+    this.el.addEventListener("click", function () {
+        document.querySelector("#video-out2").pause();
+        document.querySelector("#audio-bird").pause();
+        document.querySelector("#video-back1").play();
+        document.querySelector("#audio-thunder").play();
+        document.getElementById('scene-out2').setAttribute('visible', 'false')
+        document.getElementById('scene-back1').setAttribute('visible', 'true')
+    }, {once: true})
+  }
+})
+
+AFRAME.registerComponent("load-back2", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("show-back2")}
+ }, {once: true})
+}
+})
+
+AFRAME.registerComponent("back2-start", {
+  init: function () {
+    this.el.addEventListener("click", function () {
+        document.querySelector("#video-back1").pause();
+        document.querySelector("#video-back2").play();
+        document.getElementById('scene-back1').setAttribute('visible', 'false')
+        document.getElementById('scene-back2').setAttribute('visible', 'true')
+    }, {once: true})
+  }
+})
+
+AFRAME.registerComponent("load-back3", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("show-back3")}
+ }, {once: true})
+}
+})
+
+AFRAME.registerComponent("back3-start", {
+  init: function () {
+    this.el.addEventListener("click", function () {
+        document.querySelector("#video-back2").pause();
+        document.querySelector("#audio-thunder").pause();
+        document.querySelector("#video-back3").play();
+        document.querySelector("#audio-lightrain").play();
+        document.getElementById('scene-back2').setAttribute('visible', 'false')
+        document.getElementById('scene-back3').setAttribute('visible', 'true')
+    }, {once: true})
+  }
+})
+
+AFRAME.registerComponent("load-greenback", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("show-greenback")}
+ }, {once: true})
+}
+})
+
+AFRAME.registerComponent("greenback-start", {
+  init: function () {
+    this.el.addEventListener("click", function () {
+        document.querySelector("#video-back3").pause();
+        document.querySelector("#audio-lightrain").pause();
+        document.querySelector("#video-greenback").play();
+        document.querySelector("#audio-rain").play();
+        document.getElementById('scene-back3').setAttribute('visible', 'false')
+        document.getElementById('scene-greenback').setAttribute('visible', 'true')
+    }, {once: true})
+  }
+})
+
+AFRAME.registerComponent("load-login", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("show-login")}
+ }, {once: true})
+}
+})
+
+AFRAME.registerComponent("login-start", {
+  init: function () {
+    this.el.addEventListener("click", function () {
+        document.querySelector("#video-greenback").pause();
+        document.querySelector("#audio-rain").pause();
+        document.querySelector("#video-login").play();
+        document.querySelector("#audio-raininside").play();
+        document.getElementById('scene-greenback').setAttribute('visible', 'false')
+        document.getElementById('scene-login').setAttribute('visible', 'true')
+    }, {once: true})
+  }
+})
+
+AFRAME.registerComponent("load-final", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("show-final")}
+ }, {once: true})
+}
+})
+
+AFRAME.registerComponent("final-start", {
+  init: function () {
+    this.el.addEventListener("click", function () {
+        document.querySelector("#video-login").pause();
+        document.querySelector("#video-final").play();
+        document.querySelector("#audio-raininside").play();
+        document.getElementById('scene-login').setAttribute('visible', 'false')
+        document.getElementById('scene-final').setAttribute('visible', 'true')
+    }, {once: true})
+  }
+})
+
+AFRAME.registerComponent("dream0", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("final0")}
+ }, {once: true})
+}
+})
+
+AFRAME.registerComponent("dream1", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("final1")}
+ }, {once: true})
+}
+})
+
+AFRAME.registerComponent("dream2", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("final2")}
+ }, {once: true})
+}
+})
+
+AFRAME.registerComponent("dream3", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue, .clickable")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("final3")}
+ }, {once: true})
+}
+})
   </script>
 
   <style>
@@ -74,20 +424,61 @@ init: function() {
   </style>
 
     <a-assets>
+      < - index - >
       <video id="wakeup" loop="false" preload src="video/wakeup1.mp4"
       playsinline webkit-playsinline></video>
-      <img id="button" src="images/phone.png">
+      <img id="phone" src="images/phone.png">
       <img id="controller" src="images/controller.png">
+      < - 1-bedroom ->
+      <video id="video-bedroom" loop preload src="video/bedroom.mp4"
+      playsinline webkit-playsinline></video>
+      <img id="healthtip" src="images/phone-bedroom.png">
+      <img id="coffee" src="images/coffee.png">
+      < - 2-greenhouse ->
+      <video id="video-greenhouse" loop preload src="video/greenhouse.mp4"
+      playsinline webkit-playsinline></video>
+      <img id="circle" src="images/circle.png" alt="">
+      <audio id="audio-cafe" loop preload src="audio/cafe1.mp3" playsinline webkit-playsinline alt=""></audio>
+      < - 3-greenstand ->
+      <img id="img-greenstand" src="images/greenstand.jpg" alt="background">
+      <audio id="audio-bird" loop preload src="audio/bird.mp3" playsinline webkit-playsinline alt=""></audio>
+      < - 3-bedback - >
+      <img id="img-bedroom" src="images/bedroom.jpg" alt="background">
+      < - 3-work ->
+      <img id="img-work" src="images/work1.jpg" alt="background">
+      < - 3-yard1 ->
+      <video id="video-yard" loop preload src="video/yard1.mp4" playsinline webkit-playsinline></video>
+      <img id="arrow" src="images/arrow.png" alt="">
+      <img id="phone-walk" src="images/phone-walk.png">
+      < - outside ->
+      <video id="video-out1" loop preload src="video/out1.mp4" playsinline webkit-playsinline></video>
+      <video id="video-out2" loop preload src="video/out2.mp4" playsinline webkit-playsinline></video>
+      <video id="video-back1" loop preload src="video/back1.mp4" playsinline webkit-playsinline></video>
+      <video id="video-back2" loop preload src="video/back2.mp4" playsinline webkit-playsinline></video>
+      <video id="video-back3" loop preload src="video/back3.mp4" playsinline webkit-playsinline></video>
+      <audio id="audio-thunder" loop preload src="audio/thunder.mp3" playsinline webkit-playsinline></audio>
+      <audio id="audio-lightrain" loop preload src="audio/rain-start.mp3" playsinline webkit-playsinline alt=""></audio>
+      <img id="phone-back" src="images/phone-back.png">
+      < - 90-greenback ->
+      <video id="video-greenback" loop preload src="video/greenback.mp4" playsinline webkit-playsinline></video>
+      <audio id="audio-rain" loop preload src="audio/rain-light.mp3" playsinline webkit-playsinline alt=""></audio>
+      < - 91-login ->
+      <video id="video-login" loop preload src="video/login.mp4" playsinline webkit-playsinline></video>
+      <img id="login" src="images/login.png" alt="">
+      <audio id="audio-raininside" loop preload src="audio/rain-inside.mp3" playsinline webkit-playsinline alt=""></audio>
+      < - 92-final ->
+      <video id="video-final" preload src="video/final.mp4" playsinline webkit-playsinline></video>
     </a-assets>
 
 <a-scene raycaster="objects: .clickable" cursor__xrselect="rayOrigin: xrselect"
-loading-screen="dotsColor: white; backgroundColor: black">
+    loading-screen="dotsColor: white; backgroundColor: black">
 
-<a-camera look-controls wasd-controls-enabled="false"></a-camera>
+  <a-camera look-controls wasd-controls-enabled="false"></a-camera>
 
   <a-entity laser-controls="hand: right"
   raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.5"></a-entity>
 
+<a-entity id="scene-wake">
   <a-videosphere src="#wakeup" rotation="0 0 0"></a-videosphere>
 
   <a-text class="dialogue" value="[ONE MORE TIME BEFORE SLEEP
@@ -136,22 +527,299 @@ loading-screen="dotsColor: white; backgroundColor: black">
   animation__on="startEvents: show2; property: scale; to: 1; dur: 100"
   animation__flash="property: opacity; to: 0; dur: 1500; dir: alternate; loop: true"
   animation__off="startEvents: click; property: scale; to: 0; dur: 100"
-  sound="on: click; delay: 13000; src: #notification"
   playstart
   waked></a-text>
 
   <a-image id="screen" class="dialogue"
-     src="#button" width="1" height="1" opacity="1" scale="0"
+     src="#phone" width="1" height="1" scale="0"
      position="-1 1.5 -1" rotation="0 45 0"
-     animation__on="startEvents: show3; property: scale; to: 1; delay: 12000; dur: 100">
+     animation__on="startEvents: show3; property: scale; to: 1; delay: 11000; dur: 100">
   </a-image>
 
-  <a-entity class="clickable" scale="0"
-  text="value: I'm Ready :); position:-1 1.3 -1; rotation: 0 45 0; width:3; color:#aaff7f; align: center"
-  width="3" position="-1 1.3 -1" rotation="0 45 0"geometry="primitive:plane; width:0.75; height:0.15" material="opacity:0"
-  animation__on="startEvents: show3; property: scale; to: 1; delay: 13000; dur: 100"
+  <a-text class="clickable" scale="0" opacity="1"
+  value="I'm Ready :)" position="-1 1.3 -1" rotation="0 45 0" width="3" color="#aaff7f" align="center"
+  geometry="primitive:plane; width:0.75; height:0.15" material="opacity:0"
+  animation__on="startEvents: show3; property: scale; to: 1; delay: 12000; dur: 100"
   animation__flash="property: opacity; to: 0; dur: 800; dir: alternate; loop: true"
-  link="href: 1-bedroom.html"></a-entity>
+  animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+  bedroom-start
+  load-bedroom></a-text>
+</a-entity>
+
+<a-entity id="scene-bedroom" visible="false">
+  <a-videosphere src="#video-bedroom" rotation="0 90 0"></a-videosphere>
+
+  <a-image id="screen" class="dialogue"
+     src="#healthtip" width="1" height="1" opacity="1" scale="0"
+     position="-1 1.5 -1" rotation="0 45 0"
+     animation__on="startEvents: show-bedroom; property: scale; to: 1; delay: 5000; dur: 100">
+  </a-image>
+
+  <a-image id="coffeebutton" class="clickable"
+     src="#coffee" width="0.8" height="0.8" opacity="1" scale="0"
+     position="3.5 1.2 -1.9" rotation="0 -45 0"
+     animation__on="startEvents: show-bedroom; property: scale; to: 1; delay: 6000; dur: 100"
+     animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+     animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+     greenhouse-start
+     load-greenhouse>
+  </a-image>
+</a-entity>
+
+<a-entity id="scene-greenhouse" visible="false">
+  <a-videosphere src="#video-greenhouse" rotation="0 90 0"></a-videosphere>
+
+  <a-image id="stand" class="clickable"
+     src="#circle" width="1" height="1" opacity="1"  scale="0"
+     position="0.5 0 3" rotation="-90 0 0"
+     animation__on="startEvents: show-greenhouse; property: scale; to: 1; delay: 5000; dur: 100"
+     animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+     animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+     greenstand-start
+     load-greenstand>
+</a-entity>
+
+<a-entity id="scene-greenstand" visible="false">
+  <a-sky src="#img-greenstand" rotation="0 -90 0"></a-sky>
+
+  <a-image id="bed" class="clickable"
+     src="#circle" width="1" height="1" opacity="1" scale="0"
+     animation__on="startEvents: show-greenstand; property: scale; to: 1; delay: 3000; dur: 100"
+     animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+     animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+     position="4 0 0" rotation="-90 0 0"
+     bedback-start
+     load-bedback>
+  </a-image>
+
+  <a-image id="work" class="clickable"
+    src="#circle" width="1" height="1" opacity="1" scale="0"
+    animation__on="startEvents: show-greenstand; property: scale; to: 1; delay: 3000; dur: 100"
+    animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+    animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+    position="-4.5 0 0" rotation="-90 0 0"
+    work-start
+    load-work>
+</a-image>
+
+<a-image id="yard" class="clickable"
+    src="#circle" width="1.5" height="1.5" opacity="1" scale="0"
+    animation__on="startEvents: show-greenstand; property: scale; to: 1; delay: 3000; dur: 100"
+    animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+    animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+    position="-2 0 6" rotation="-90 0 0"
+    yard-start
+    load-yard>
+  </a-image>
+</a-entity>
+
+<a-entity id="scene-bedback" visible="false">
+  <a-sky src="#img-bedroom"></a-sky>
+
+  <a-image id="green1" class="clickable"
+     src="#circle" width="1" height="1" opacity="1" scale="0"
+     animation__on="startEvents: show-bedback; property: scale; to: 1; delay: 1500; dur: 100"
+     animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+     animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+     position="0 0 3.5" rotation="-90 0 0"
+     greenstand-start
+     load-greenstand></a-image>
+</a-entity>
+
+<a-entity id="scene-work" visible="false">
+  <a-sky src="#img-work" rotation="0 180 0"></a-sky>
+
+  <a-image id="green2" class="clickable"
+     src="#circle"  width="1.5" height="1.5" opacity="1" scale="0"
+     animation__on="startEvents: show-work; property: scale; to: 1; delay: 1500; dur: 100"
+     animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+     animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+     position="0 0 5.5" rotation="-90 0 0"
+     greenstand-start
+     load-greenstand></a-image>
+</a-entity>
+
+<a-entity id="scene-yard" visible="false">
+  <a-videosphere src="#video-yard" rotation="0 90 0"></a-videosphere>
+
+  <a-image class="dialogue"
+     src="#phone-walk" width="1" height="1" scale="0"
+     position="-0.95 1.5 -0.95" rotation="0 45 0"
+     animation__on="startEvents: show-yard; property: scale; to: 1; delay: 5000; dur: 100">
+  </a-image>
+
+  <a-text class="clickable" value="Go for a mask-free walk?"
+  color="#aaff7f" opacity="1" align="center" scale="0"
+  width="1.8" position="-0.95 1.12 -0.95" rotation="0 45 0" geometry="primitive:plane; width:0.9; height:0.13" material="opacity:0"
+  animation__on="startEvents: show-yard; property: scale; to: 1; delay: 6000; dur: 100"
+  animation__flash="property: opacity; to: 0.25; dur: 800; dir: alternate; loop: true"
+  animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+  yard0></a-text>
+
+  <a-text class="dialogue" value="East Door Unlocked"
+  color="#aaff7f" opacity="1" align="center" scale="0"
+  width="1.8" position="-0.95 1.15 -0.95" rotation="0 45 0"
+  animation__on="startEvents: door0; property: scale; to: 1; delay: 500; dur: 100"></a-text>
+
+  <a-image id="door" class="clickable"
+  src="#arrow" width="1" height="1" opacity="1" scale="0"
+  animation__on="startEvents: door0; property: scale; to: 1; delay: 500; dur: 100"
+  animation__flash="property: opacity; to: 0; dur: 1000; dir: alternate; loop: true"
+  animation__down="property: position; to: 3.5 2.85 -6; dur: 1000; dir: alternate; loop: true"
+  animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+  position="3.5 3 -6" rotation="0 0 0"
+  out1-start
+  load-out1></a-image>
+</a-entity>
+
+<a-entity id="scene-out1" visible="false">
+  <a-videosphere src="#video-out1" rotation="0 90 0"></a-videosphere>
+
+  <a-image id="proceed1" class="clickable"
+    src="#arrow" width="2" height="2" opacity="1" scale="0"
+    animation__on="startEvents: show-out1; property: scale; to: 1; delay: 3000; dur: 100"
+    animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+    animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+    position="-7 0 1.5" rotation="-90 0 -77"
+    out2-start
+    load-out2></a-image>
+</a-entity>
+
+<a-entity id="scene-out2" visible="false">
+  <a-videosphere src="#video-out2" rotation="0 0 0"></a-videosphere>
+
+  <a-image id="proceed2" class="clickable"
+    src="#arrow" width="2.5" height="2.5" opacity="1" scale="0"
+    animation__on="startEvents: show-out2; property: scale; to: 1; delay: 3000; dur: 100"
+    animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+    animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+    position="-2.75 0 -10" rotation="90 0 -10"
+    back1-start
+    load-back1></a-image>
+</a-entity>
+
+<a-entity id="scene-back1" visible="false">
+  <a-videosphere src="#video-back1" rotation="0 0 0"></a-videosphere>
+
+  <a-image class="dialogue"
+     src="#phone-back" width="1" height="1" opacity="1" scale="0"
+     animation__on="startEvents: show-back1; property: scale; to: 1; delay: 5000; dur: 100"
+     position="-1 1.5 -1" rotation="0 45 0">
+  </a-image>
+
+  <a-image id="proceedback" class="clickable"
+    src="#arrow" width="1.75" height="1.75" opacity="1" scale="0"
+    animation__on="startEvents: show-back1; property: scale; to: 1; delay: 6000; dur: 100"
+    animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+    animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+    position="1.5 0 6" rotation="-90 0 15"
+    back2-start
+    load-back2>
+  </a-image>
+</a-entity>
+
+<a-entity id="scene-back2" visible="false">
+  <a-videosphere src="#video-back2" rotation="0 0 0"></a-videosphere>
+
+  <a-image id="proceedback2" class="clickable"
+    src="#arrow" width="2" height="2" opacity="1" scale="0"
+    animation__on="startEvents: show-back2; property: scale; to: 1; delay: 3000; dur: 100"
+    animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+    animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+    position="1.75 0 7" rotation="-90 0 15"
+    back3-start
+    load-back3>
+  </a-image>
+</a-entity>
+
+<a-entity id="scene-back3" visible="false">
+  <a-videosphere src="#video-back3" rotation="0 0 0"></a-videosphere>
+
+  <a-image id="proceedback3" class="clickable"
+    src="#arrow" width="1.25" height="1.25" opacity="1" scale="0"
+    animation__on="startEvents: show-back3; property: scale; to: 1; delay: 3000; dur: 100"
+    animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+    animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+    position="-4.5 0 1.25" rotation="-90 0 -90"
+    greenback-start
+    load-greenback>
+  </a-image>
+</a-entity>
+
+<a-entity id="scene-greenback" visible="false">
+  <a-videosphere src="#video-greenback" rotation="0 -90 0"></a-videosphere>
+
+  <a-image id="proceedgreenback" class="clickable"
+    src="#circle" width="1" height="1" opacity="1" scale="0"
+    animation__on="startEvents: show-greenback; property: scale; to: 1; delay: 5000; dur: 100"
+    animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+    animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+    position="-4.5 0 0" rotation="90 0 90"
+    login-start
+    load-login>
+  </a-image>
+</a-entity>
+
+<a-entity id="scene-login" visible="false">
+  <a-videosphere src="#video-login" rotation="0 180 0"></a-videosphere>
+
+  <a-image id="proceedlogin" class="clickable"
+    src="#login" width="0.5" height="0.25" opacity="1" scale="0"
+    animation__on="startEvents: show-login; property: scale; to: 1; delay: 3000; dur: 100"
+    animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+    position="2.5 1.2 0.05" rotation="180 90 180"
+    final-start
+    load-final>
+  </a-image>
+</a-entity>
+
+<a-entity id="scene-final" visible="false">
+  <a-videosphere src="#video-final" rotation="0 -90 0"></a-videosphere>
+
+  <a-text class="clickable" value="...seems like I'm not I'm not ready to work yet..."
+  color="white" position="0 1.6 -1" scale="0" opacity="1" align="center"
+  width="1" rotation="0 0 0" geometry="primitive:plane; width:0.9; height:0.1" material="opacity: 0"
+  animation__on="startEvents: show-final; delay: 34000; property: scale; to: 1; dur: 100"
+  animation__flash="property: opacity; to: 0; dur: 1500; dir: alternate; loop: true"
+  animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+  dream0></a-text>
+
+  <a-text class="clickable" value="none of those health tips helped..."
+  color="white" position="0 1.6 -1" scale="0" opacity="1" align="center"
+  width="1" rotation="0 0 0" geometry="primitive:plane; width:0.75; height:0.1" material="opacity: 0"
+  animation__on="startEvents: final0; property: scale; to: 1; dur: 100"
+  animation__flash="property: opacity; to: 0; dur: 1500; dir: alternate; loop: true"
+  animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+  dream1></a-text>
+
+  <a-text class="clickable" value="...or maybe its not really a
+  'summer dizziness' or 'daydream'"
+  color="white" position="0 1.6 -1" scale="0" opacity="1" align="center"
+  width="1" rotation="0 0 0" geometry="primitive:plane; width:1; height:0.12" material="opacity: 0"
+  animation__on="startEvents: final1; property: scale; to: 1; dur: 100"
+  animation__flash="property: opacity; to: 0; dur: 1500; dir: alternate; loop: true"
+  animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+  dream2></a-text>
+
+  <a-text class="clickable" value="Maybe I just somehow stepped into another world
+
+  where the pandemic ended for real!"
+  color="white" position="0 1.6 -1" scale="0" opacity="1" align="center"
+  width="1" rotation="0 0 0" geometry="primitive:plane; width:1.1; height:0.12" material="opacity: 0"
+  animation__on="startEvents: final2; property: scale; to: 1; dur: 100"
+  animation__flash="property: opacity; to: 0; dur: 1500; dir: alternate; loop: true"
+  animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+  dream3></a-text>
+
+  <a-text class="dialogue" value="Am I awake right now?
+  -
+  [ END ]"
+  color="white" position="0 1.6 -1" scale="0" opacity="1" align="center"
+  width="1" rotation="0 0 0"
+  animation__on="startEvents: final3; property: scale; to: 1; dur: 100"></a-text>
+</a-entity>
+
+
   </a-scene>
 
 </body>
