@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Wake Up from 2020</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="aframe\aframe.min.js"></script>
+  <script src="js\jquery-3.7.0.min.js"></script>
+</head>
+
+<body>
+
+  <script>
+  window.addEventListener('vrdisplayactivate', function () {
+  device.requestPresent([{source: renderer.domElement}]);
+  });
+
+AFRAME.registerComponent('auto-enter-vr', {
+  init: function () {
+    this.el.sceneEl.enterVR();
+  }
+});
+</script>
+
+<style>
+div.a-enter-ar {
+  visibility: hidden;
+}
+div.a-enter-vr {
+  visibility: hidden;
+}
+</style>
+
+<a-assets>
+  <video id="sky" autoplay loop preload src="video/bedroom.mp4"
+  playsinline webkit-playsinline></video>
+  <img id="phone" src="images/phone-bedroom.png">
+  <img id="button" src="images/coffee.png">
+</a-assets>
+
+<a-scene raycaster="objects: .clickable" cursor__xrselect="rayOrigin: xrselect"
+loading-screen="dotsColor: white; backgroundColor: black" auto-enter-vr>
+
+<a-camera look-controls wasd-controls-enabled="false"></a-camera>
+
+  <a-entity laser-controls="hand: right"
+  raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.5"></a-entity>
+
+  <a-sky src="#sky" rotation="0 90 0"></a-sky>
+
+  <a-image id="screen"
+     src="#phone" width="1" height="1" opacity="1" scale="0"
+     position="-1 1.5 -1" rotation="0 45 0"
+     animation__on="property: scale; to: 1; delay: 5000; dur: 100">
+  </a-image>
+
+
+  <a-image id="1" class="clickable"
+     src="#button" width="0.8" height="0.8" opacity="1" scale="0"
+     animation__on="property: scale; to: 1; delay: 7000; dur: 100"
+     animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+     position="3.5 1.2 -1.9"
+     rotation="0 -45 0"
+     link="href: 2-greenhouse.html">
+  </a-image>
+
+</a-scene>
+
+</body>
+</html

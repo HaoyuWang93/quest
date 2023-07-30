@@ -1,0 +1,145 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Wake Up from 2020</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <script>
+    AFRAME.registerComponent("playstart", {
+      init: function () {
+        var myVideo = document.querySelector("#wakeup");
+        this.el.addEventListener("click", function () {
+            myVideo.play();
+        }, {once: true})
+      }
+    })
+
+    AFRAME.registerComponent("waking0", {
+  init: function() {
+     var pieces = document.querySelectorAll(".dialogue, .clickable")
+     this.el.addEventListener("click", e => {
+       for (let piece of pieces) {
+         piece.emit("show0")}
+     }, {once: true})
+   }
+})
+
+    AFRAME.registerComponent("waking1", {
+  init: function() {
+     var pieces = document.querySelectorAll(".dialogue, .clickable")
+     this.el.addEventListener("click", e => {
+       for (let piece of pieces) {
+         piece.emit("show1")}
+     }, {once: true})
+   }
+})
+
+    AFRAME.registerComponent("waked", {
+  init: function() {
+     var pieces = document.querySelectorAll(".dialogue, .clickable")
+     this.el.addEventListener("click", e => {
+       for (let piece of pieces) {
+         piece.emit("show2")}
+     }, {once: true})
+   }
+})
+
+AFRAME.registerComponent("weblink", {
+schema: {
+  url: {
+    default: ""
+  }
+},
+init: function() {
+  this.el.addEventListener("click", (e) => {
+    window.location = this.data.url;
+  })
+}
+})
+  </script>
+
+  <style>
+  div.a-enter-ar {
+    visibility: hidden;
+  }
+  </style>
+
+
+    <a-assets>
+      <video id="wakeup" loop="false" preload src="video/wakeup1.mp4"
+      playsinline webkit-playsinline></video>
+      <img id="button" src="images/phone.png">
+    </a-assets>
+
+
+<a-scene cursor__xrselect="rayOrigin: xrselect"
+loading-screen="dotsColor: white; backgroundColor: black">
+
+<a-camera look-controls wasd-controls-enabled="false">
+  <a-cursor raycaster="objects: .clickable" position="0 0 -1" fuse="false"
+            geometry="primitive: ring; radiusInner: 0.015; radiusOuter: 0.02"
+            material="color: red; shader: flat"
+            animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+            animation__mouseenter="property: components.material.material.color; type: color; to: green; startEvents: mouseenter; dur: 500"
+            animation__mouseleave="property: components.material.material.color; type: color; to: red; startEvents: mouseleave; dur: 500">
+          </a-cursor></a-camera>
+
+  <a-videosphere src="#wakeup" rotation="0 0 0"></a-videosphere>
+
+  <a-text class="clickable" value="...I had a weird dream in which
+  the pandemic was ending..."
+  color="white" position="0 2 -1" scale="1" opacity="1" align="center"
+  width="1" rotation="30 0 0" geometry="primitive:plane; width:0.6; height:0.12" material="color:black"
+  animation__flash="property: opacity; to: 0; dur: 1500; dir: alternate; loop: true"
+  animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+  waking0></a-text>
+
+  <a-text class="clickable" value="maybe I'm just puzzled by
+  the timeless daylight here..." color="white" position="0 2 -1" scale="0" opacity="1" align="center"
+  width="1" rotation="30 0 0" geometry="primitive:plane; width:0.6; height:0.12" material="color:black"
+  animation__on="startEvents: show0; property: scale; to: 1; dur: 100"
+  animation__flash="property: opacity; to: 0; dur: 1500; dir: alternate; loop: true"
+  animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+  waking1></a-text>
+
+  <a-text class="clickable" value="Wake Up Time?" color="white" position="0 2 -1" scale="0" opacity="1" align="center"
+  width="2" rotation="30 0 0" geometry="primitive:plane; width:0.6; height:0.12" material="color:black"
+  animation__on="startEvents: show1; property: scale; to: 1; dur: 100"
+  animation__flash="property: opacity; to: 0; dur: 1500; dir: alternate; loop: true"
+  animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+  sound="on: click; delay: 12000; src: #notification"
+  playstart
+  waked></a-text>
+
+  <a-image id="screen" class="dialogue"
+     src="#button" width="1" height="1" opacity="1" scale="0"
+     position="-1 1.5 -1" rotation="0 45 0"
+     animation__on="startEvents: show2; property: scale; to: 1; delay: 11000; dur: 100">
+  </a-image>
+
+  <a-text class="clickable" value="I'm Ready :)"
+  color="#aaff7f" opacity="1" align="center" scale="0"
+  width="2" position="-1 1.4 -1" rotation="0 45 0"geometry="primitive:plane; width:0.75; height:0.13" material="opacity:0"
+  animation__on="startEvents: show2; property: scale; to: 1; delay: 12000; dur: 100"
+  animation__flash="property: opacity; to: 0.5; dur: 800; dir: alternate; loop: true"
+  weblink="url: bedroom.html"></a-text>
+
+  <a-text class="clickable" value="Report Health Emergency"
+  color="red" opacity="1" align="center" scale="0"
+  width="1.5" position="-1 1.2 -1" rotation="0 45 0"geometry="primitive:plane; width:0.75; height:0.1" material="opacity:0"
+  animation__on="startEvents: show2; property: scale; to: 1; delay: 12000; dur: 100"
+  animation__flash="property: opacity; to: 0.5; dur: 800; dir: alternate; loop: true"
+  weblink="url: health.html"></a-text>
+
+  </a-scene>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Wake Up from 2020</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="aframe\aframe.min.js"></script>
+</head>
+
+<body>
+
+<script>
+AFRAME.registerComponent('auto-enter-vr', {
+  init: function () {
+    this.el.sceneEl.enterVR();
+  }
+});
+
+  AFRAME.registerComponent("weblink", {
+  schema: {
+    url: {
+      default: ""
+    }
+  },
+  init: function() {
+    this.el.addEventListener("click", (e) => {
+      window.location = this.data.url;
+    })
+  }
+})
+</script>
+
+<style>
+div.a-enter-ar {
+  visibility: hidden;
+}
+div.a-enter-vr {
+  visibility: hidden;
+}
+</style>
+
+<a-assets>
+  <img id="sky" src="images/work1.jpg" alt="background">
+  <img id="button" src="images/circle.png">
+  <audio id="bird" autoplay loop preload src="audio/bird.mp3" playsinline webkit-playsinline alt=""></audio>
+
+</a-assets>
+
+<a-scene raycaster="objects: .clickable" cursor="rayOrigin: mouse; fuse: false;"
+loading-screen="dotsColor: white; backgroundColor: black" auto-enter-vr>
+
+<a-camera look-controls wasd-controls-enabled="false"></a-camera>
+
+  <a-sky src="#sky" rotation="0 180 0"></a-sky>
+  <a-sound src="#bird" position="3 2 -5"></a-sound>
+
+  <a-image id="green" class="clickable"
+     src="#button" width="1.5" height="1.5" opacity="1" scale="0"
+     animation__on="property: scale; to: 1; delay: 3000; dur: 100"
+     animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+     animation__zoom3="startEvents: show; property: scale; from: 1 1 1; to: 0.8 0.8; dur: 600; dir: alternate; loop: true"
+     position="0 0 5.5"
+     rotation="-90 0 0"
+     weblink="url: 3-greenstand.html">
+  </a-image>
+
+</a-scene>
+
+</body>
+</html
