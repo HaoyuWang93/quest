@@ -10,11 +10,7 @@
 <body>
 
   <script>
-  window.addEventListener('vrdisplayactivate', function () {
-  device.requestPresent([{source: renderer.domElement}]);
-  });
-
-    AFRAME.registerComponent("playstart", {
+  AFRAME.registerComponent("playstart", {
       init: function () {
         this.el.addEventListener("click", function () {
             document.querySelector("#wakeup").play();
@@ -77,7 +73,7 @@ AFRAME.registerComponent("bedroom-start", {
     this.el.addEventListener("click", function () {
         document.querySelector("#wakeup").pause();
         document.querySelector("#video-bedroom").play();
-        document.getElementById('scene-wake').setAttribute('visible', 'false')
+        document.getElementById('scene-wake').setAttribute('visible', 'false');
         document.getElementById('scene-bedroom').setAttribute('visible', 'true')
     }, {once: true})
   }
@@ -99,7 +95,7 @@ AFRAME.registerComponent("greenhouse-start", {
         document.querySelector("#video-bedroom").pause();
         document.querySelector("#video-greenhouse").play();
         document.querySelector("#audio-cafe").play();
-        document.getElementById('scene-bedroom').setAttribute('visible', 'false')
+        document.getElementById('scene-bedroom').setAttribute('visible', 'false');
         document.getElementById('scene-greenhouse').setAttribute('visible', 'true')
     }, {once: true})
   }
@@ -122,10 +118,10 @@ AFRAME.registerComponent("greenstand-start", {
         document.querySelector("#video-yard").pause();
         document.querySelector("#audio-cafe").pause();
         document.querySelector("#audio-bird").play();
-        document.getElementById('scene-greenhouse').setAttribute('visible', 'false')
-        document.getElementById('scene-yard').setAttribute('visible', 'false')
-        document.getElementById('scene-bedback').setAttribute('visible', 'false')
-        document.getElementById('scene-work').setAttribute('visible', 'false')
+        document.getElementById('scene-greenhouse').setAttribute('visible', 'false');
+        document.getElementById('scene-yard').setAttribute('visible', 'false');
+        document.getElementById('scene-bedback').setAttribute('visible', 'false');
+        document.getElementById('scene-work').setAttribute('visible', 'false');
         document.getElementById('scene-greenstand').setAttribute('visible', 'true')
     })
   }
@@ -144,7 +140,7 @@ init: function() {
 AFRAME.registerComponent("bedback-start", {
   init: function () {
     this.el.addEventListener("click", function () {
-        document.getElementById('scene-greenstand').setAttribute('visible', 'false')
+        document.getElementById('scene-greenstand').setAttribute('visible', 'false');
         document.getElementById('scene-bedback').setAttribute('visible', 'true')
     })
   }
@@ -163,7 +159,7 @@ init: function() {
 AFRAME.registerComponent("work-start", {
   init: function () {
     this.el.addEventListener("click", function () {
-        document.getElementById('scene-greenstand').setAttribute('visible', 'false')
+        document.getElementById('scene-greenstand').setAttribute('visible', 'false');
         document.getElementById('scene-work').setAttribute('visible', 'true')
     })
   }
@@ -175,7 +171,7 @@ init: function() {
  this.el.addEventListener("click", e => {
    for (let piece of pieces) {
      piece.emit("show-yard")}
- })
+ }, {once: true})
 }
 })
 
@@ -183,9 +179,9 @@ AFRAME.registerComponent("yard-start", {
   init: function () {
     this.el.addEventListener("click", function () {
         document.querySelector("#video-yard").play();
-        document.getElementById('scene-greenstand').setAttribute('visible', 'false')
+        document.getElementById('scene-greenstand').setAttribute('visible', 'false');
         document.getElementById('scene-yard').setAttribute('visible', 'true')
-    })
+    }, {once: true})
   }
 })
 
@@ -214,7 +210,7 @@ AFRAME.registerComponent("out1-start", {
     this.el.addEventListener("click", function () {
         document.querySelector("#video-yard").pause();
         document.querySelector("#video-out1").play();
-        document.getElementById('scene-yard').setAttribute('visible', 'false')
+        document.getElementById('scene-yard').setAttribute('visible', 'false');
         document.getElementById('scene-out1').setAttribute('visible', 'true')
     }, {once: true})
   }
@@ -235,7 +231,7 @@ AFRAME.registerComponent("out2-start", {
     this.el.addEventListener("click", function () {
         document.querySelector("#video-out1").pause();
         document.querySelector("#video-out2").play();
-        document.getElementById('scene-out1').setAttribute('visible', 'false')
+        document.getElementById('scene-out1').setAttribute('visible', 'false');
         document.getElementById('scene-out2').setAttribute('visible', 'true')
     }, {once: true})
   }
@@ -258,7 +254,7 @@ AFRAME.registerComponent("back1-start", {
         document.querySelector("#audio-bird").pause();
         document.querySelector("#video-back1").play();
         document.querySelector("#audio-thunder").play();
-        document.getElementById('scene-out2').setAttribute('visible', 'false')
+        document.getElementById('scene-out2').setAttribute('visible', 'false');
         document.getElementById('scene-back1').setAttribute('visible', 'true')
     }, {once: true})
   }
@@ -279,7 +275,7 @@ AFRAME.registerComponent("back2-start", {
     this.el.addEventListener("click", function () {
         document.querySelector("#video-back1").pause();
         document.querySelector("#video-back2").play();
-        document.getElementById('scene-back1').setAttribute('visible', 'false')
+        document.getElementById('scene-back1').setAttribute('visible', 'false');
         document.getElementById('scene-back2').setAttribute('visible', 'true')
     }, {once: true})
   }
@@ -302,7 +298,7 @@ AFRAME.registerComponent("back3-start", {
         document.querySelector("#audio-thunder").pause();
         document.querySelector("#video-back3").play();
         document.querySelector("#audio-lightrain").play();
-        document.getElementById('scene-back2').setAttribute('visible', 'false')
+        document.getElementById('scene-back2').setAttribute('visible', 'false');
         document.getElementById('scene-back3').setAttribute('visible', 'true')
     }, {once: true})
   }
@@ -325,7 +321,7 @@ AFRAME.registerComponent("greenback-start", {
         document.querySelector("#audio-lightrain").pause();
         document.querySelector("#video-greenback").play();
         document.querySelector("#audio-rain").play();
-        document.getElementById('scene-back3').setAttribute('visible', 'false')
+        document.getElementById('scene-back3').setAttribute('visible', 'false');
         document.getElementById('scene-greenback').setAttribute('visible', 'true')
     }, {once: true})
   }
@@ -344,11 +340,11 @@ init: function() {
 AFRAME.registerComponent("login-start", {
   init: function () {
     this.el.addEventListener("click", function () {
-        document.querySelector("#video-greenhouse").pause();
+        document.querySelector("#video-greenback").pause();
         document.querySelector("#audio-rain").pause();
         document.querySelector("#video-login").play();
         document.querySelector("#audio-raininside").play();
-        document.getElementById('scene-greenback').setAttribute('visible', 'false')
+        document.getElementById('scene-greenback').setAttribute('visible', 'false');
         document.getElementById('scene-login').setAttribute('visible', 'true')
     }, {once: true})
   }
@@ -369,7 +365,7 @@ AFRAME.registerComponent("final-start", {
     this.el.addEventListener("click", function () {
         document.querySelector("#video-login").pause();
         document.querySelector("#video-final").play();
-        document.getElementById('scene-login').setAttribute('visible', 'false')
+        document.getElementById('scene-login').setAttribute('visible', 'false');
         document.getElementById('scene-final').setAttribute('visible', 'true')
     }, {once: true})
   }
@@ -571,6 +567,7 @@ init: function() {
      animation__on="startEvents: show-greenhouse; property: scale; to: 1; delay: 5000; dur: 100"
      animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
      animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+     animation__off2="startEvents: show-yard; property: scale; to: 0; dur: 100"
      greenstand-start
      load-greenstand>
 </a-entity>
@@ -583,6 +580,7 @@ init: function() {
      animation__on="startEvents: show-greenstand; property: scale; to: 1; delay: 3000; dur: 100"
      animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
      animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+     animation__off2="startEvents: show-yard; property: scale; to: 0; dur: 100"
      position="4 0 0" rotation="-90 0 0"
      bedback-start
      load-bedback>
@@ -593,6 +591,7 @@ init: function() {
     animation__on="startEvents: show-greenstand; property: scale; to: 1; delay: 3000; dur: 100"
     animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
     animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+    animation__off2="startEvents: show-yard; property: scale; to: 0; dur: 100"
     position="-4.5 0 0" rotation="-90 0 0"
     work-start
     load-work>
@@ -617,6 +616,7 @@ init: function() {
      animation__on="startEvents: show-bedback; property: scale; to: 1; delay: 1500; dur: 100"
      animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
      animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+     animation__off2="startEvents: show-yard; property: scale; to: 0; dur: 100"
      position="0 0 3.5" rotation="-90 0 0"
      greenstand-start
      load-greenstand></a-image>
@@ -630,6 +630,7 @@ init: function() {
      animation__on="startEvents: show-work; property: scale; to: 1; delay: 1500; dur: 100"
      animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
      animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+     animation__off2="startEvents: show-yard; property: scale; to: 0; dur: 100"
      position="0 0 5.5" rotation="-90 0 0"
      greenstand-start
      load-greenstand></a-image>
@@ -682,14 +683,14 @@ init: function() {
 </a-entity>
 
 <a-entity id="scene-out2" visible="false">
-  <a-videosphere src="#video-out2" rotation="0 0 0"></a-videosphere>
+  <a-videosphere src="#video-out2" rotation="0 90 0"></a-videosphere>
 
   <a-image id="proceed2" class="clickable"
-    src="#arrow" width="2.5" height="2.5" opacity="1" scale="0"
+    src="#arrow" width="2.75" height="2.75" opacity="1" scale="0"
     animation__on="startEvents: show-out2; property: scale; to: 1; delay: 3000; dur: 100"
     animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
     animation__off="startEvents: click; property: scale; to: 0; dur: 100"
-    position="-2.75 0 -10" rotation="90 0 -10"
+    position="-10 0 2.75" rotation="90 10 -90"
     back1-start
     load-back1></a-image>
 </a-entity>
@@ -771,19 +772,19 @@ init: function() {
 </a-entity>
 
 <a-entity id="scene-final" visible="false">
-  <a-videosphere src="#video-final" rotation="0 -90 0"></a-videosphere>
+  <a-videosphere src="#video-final" rotation="0 180 0"></a-videosphere>
 
   <a-text class="clickable" value="...seems like I'm not I'm not ready to work yet..."
-  color="white" position="0 1.6 -1" scale="0" opacity="1" align="center"
-  width="1" rotation="0 0 0" geometry="primitive:plane; width:0.9; height:0.1" material="opacity: 0"
+  color="white" position="1 1.6 0" scale="0" opacity="1" align="center"
+  width="1" rotation="0 -90 0" geometry="primitive:plane; width:0.9; height:0.1" material="opacity: 0"
   animation__on="startEvents: show-final; delay: 34000; property: scale; to: 1; dur: 100"
   animation__flash="property: opacity; to: 0; dur: 1500; dir: alternate; loop: true"
   animation__off="startEvents: click; property: scale; to: 0; dur: 100"
   dream0></a-text>
 
   <a-text class="clickable" value="none of those health tips helped..."
-  color="white" position="0 1.6 -1" scale="0" opacity="1" align="center"
-  width="1" rotation="0 0 0" geometry="primitive:plane; width:0.75; height:0.1" material="opacity: 0"
+  color="white" position="1 1.6 0" scale="0" opacity="1" align="center"
+  width="1" rotation="0 -90 0" geometry="primitive:plane; width:0.75; height:0.1" material="opacity: 0"
   animation__on="startEvents: final0; property: scale; to: 1; dur: 100"
   animation__flash="property: opacity; to: 0; dur: 1500; dir: alternate; loop: true"
   animation__off="startEvents: click; property: scale; to: 0; dur: 100"
@@ -791,8 +792,8 @@ init: function() {
 
   <a-text class="clickable" value="...or maybe its not really a
   'summer dizziness' or 'daydream'"
-  color="white" position="0 1.6 -1" scale="0" opacity="1" align="center"
-  width="1" rotation="0 0 0" geometry="primitive:plane; width:1; height:0.12" material="opacity: 0"
+  color="white" position="1 1.6 0" scale="0" opacity="1" align="center"
+  width="1" rotation="0 -90 0" geometry="primitive:plane; width:1; height:0.12" material="opacity: 0"
   animation__on="startEvents: final1; property: scale; to: 1; dur: 100"
   animation__flash="property: opacity; to: 0; dur: 1500; dir: alternate; loop: true"
   animation__off="startEvents: click; property: scale; to: 0; dur: 100"
@@ -801,8 +802,8 @@ init: function() {
   <a-text class="clickable" value="Maybe I just somehow stepped into another world
 
   where the pandemic ended for real!"
-  color="white" position="0 1.6 -1" scale="0" opacity="1" align="center"
-  width="1" rotation="0 0 0" geometry="primitive:plane; width:1.1; height:0.12" material="opacity: 0"
+  color="white" position="1 1.6 0" scale="0" opacity="1" align="center"
+  width="1" rotation="0 -90 0" geometry="primitive:plane; width:1.1; height:0.12" material="opacity: 0"
   animation__on="startEvents: final2; property: scale; to: 1; dur: 100"
   animation__flash="property: opacity; to: 0; dur: 1500; dir: alternate; loop: true"
   animation__off="startEvents: click; property: scale; to: 0; dur: 100"
@@ -811,8 +812,8 @@ init: function() {
   <a-text class="dialogue" value="Am I awake right now?
   -
   [ END ]"
-  color="white" position="0 1.6 -1" scale="0" opacity="1" align="center"
-  width="1" rotation="0 0 0"
+  color="white" position="1 1.6 0" scale="0" opacity="1" align="center"
+  width="1" rotation="0 -90 0"
   animation__on="startEvents: final3; property: scale; to: 1; dur: 100"></a-text>
 </a-entity>
 
