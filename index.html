@@ -472,15 +472,13 @@ init: function() {
 <a-scene raycaster="objects: .clickable" cursor__xrselect="rayOrigin: xrselect"
     loading-screen="dotsColor: white; backgroundColor: black">
 
-  <a-camera position="0 1.6 0"></a-camera>
-
   <a-entity laser-controls="hand: right"
-  raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.5; far: 1"></a-entity>
+  raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.5"></a-entity>
 
 <a-entity id="scene-wake">
   <a-videosphere src="#wakeup" rotation="0 0 0"></a-videosphere>
 
-  <a-text class="dialogue" value="TEST LOOKCONTROL [Click the bottom-right 'VR' button to start]
+  <a-text class="dialogue" value="[Click the bottom-right 'VR' button to start]
 
   [Pull the right-hand trigger
   on the Flashing Texts/Objects
