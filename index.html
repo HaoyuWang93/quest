@@ -344,7 +344,7 @@ init: function() {
 AFRAME.registerComponent("login-start", {
   init: function () {
     this.el.addEventListener("click", function () {
-        document.querySelector("#video-greenback").pause();
+        document.querySelector("#video-greenhouse").pause();
         document.querySelector("#audio-rain").pause();
         document.querySelector("#video-login").play();
         document.querySelector("#audio-raininside").play();
@@ -763,6 +763,7 @@ init: function() {
     src="#login" width="0.5" height="0.25" opacity="1" scale="0"
     animation__on="startEvents: show-login; property: scale; to: 1; delay: 3000; dur: 100"
     animation__flash="property: opacity; to: 0; dur: 600; dir: alternate; loop: true"
+    animation__off="startEvents: click; property: scale; to: 0; dur: 100"
     position="2.5 1.2 0.05" rotation="180 90 180"
     final-start
     load-final>
