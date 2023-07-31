@@ -27,7 +27,37 @@ function precache() {
   return caches.open(CACHE).then(function (cache) {
     return cache.addAll([
       './index.html',
-      './aframe.min.js'
+      './aframe/aframe.min.js'
+      './audio/bird.mp3'
+      './audio/cafe1.mp3'
+      './audio/rain-inside.mp3'
+      './audio/rain-light.mp3'
+      './audio/rain-start.mp3'
+      './audio/thunder.mp3'
+      './images/arrow.png'
+      './images/bedroom.jpg'
+      './images/circle.png'
+      './images/coffee.png'
+      './images/controller.png'
+      './images/greenstand.jpg'
+      './images/login.png'
+      './images/phone-back.png'
+      './images/phone-bedroom.png'
+      './images/phone-walk.png'
+      './images/phone.png'
+      './images/walk1.jpg'
+      './video/back1.mp4'
+      './video/back2.mp4'
+      './video/back3.mp4'
+      './video/bedroom.mp4'
+      './video/final.mp4'
+      './video/greenback.mp4'
+      './video/greenhouse.mp4'
+      './video/login.mp4'
+      './video/out1.mp4'
+      './video/out2.mp4'
+      './video/wakeup1.mp4'
+      './video/yard1.mp4'
     ]);
   });
 }
