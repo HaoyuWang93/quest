@@ -1,15 +1,27 @@
 
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Wake Up from 2020</title>
   <script src="aframe\aframe.min.js"></script>
+  <link rel="manifest" href="manifest.webmanifest">
 </head>
 
 <body>
 
   <script>
+  if ("serviceWorker" in navigator) {
+              navigator.serviceWorker
+                  .register("\wu_sw.js")
+                  .then(serviceWorker => {
+                      console.log("Service Worker registered: ", serviceWorker);
+                  })
+                  .catch(error => {
+                      console.error("Error registering the Service Worker: ", error);
+                  });
+          }
+
   AFRAME.registerComponent("playstart", {
       init: function () {
         this.el.addEventListener("click", function () {
