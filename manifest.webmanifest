@@ -5,7 +5,7 @@
     "start_url": "https://haoyuwang93.github.io/quest/",
     "display": "fullscreen",
     "theme_color": "#3399ff",
-    "ovr_package_name":"WakeUp.haoyuwang",
+    "ovr_package_name":"WakeUp.haoyuwang.pwa",
     "icons": [
       {
         "src": "cover.png",
