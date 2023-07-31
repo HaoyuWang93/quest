@@ -1,18 +1,18 @@
 {
-    "name": "Wake Up From 2020",
-    "short_name": "Wake Up",
-    "lang": "en-US",
-    "start_url": "https://haoyuwang93.github.io/quest/",
-    "display": "fullscreen",
-    "theme_color": "#3399ff",
-    "ovr_package_name":"WakeUp.haoyuwang.pwa",
-    "icons": [
-      {
-        "src": "cover.png",
-        "sizes": "512x512",
-        "type": "image/png",
-        "purpose": "any maskable"
-      }
-    ],
-    "background_color": "#000"
-  }
+  "name": "Wake Up From 2020",
+  "short_name": "Wake Up",
+  "lang": "en-US",
+  "start_url": "https://haoyuwang93.github.io/quest/",
+  "display": "fullscreen",
+  "theme_color": "#3399ff",
+  "ovr_package_name": "WakeUp.haoyuwang.pwa",
+  "icons": [
+    {
+      "src": "cover.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "background_color": "#000"
+}
